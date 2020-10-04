@@ -111,9 +111,16 @@ class SoftbotRobot(MOORobotInterface):
 
         # run simulator to optimize morphology, compute and save fitness
 
-        # self.fitness = GetHomProp2D_PlaneStress(self.morphology, 1, 1, 1, 1)
+        #
         # An example fitness function to minimize the number of voxels in a robot
-        self.fitness = -1 * np.sum(self.morphology > 0)
+        # self.fitness = -1 * np.sum(self.morphology > 0)
+
+        E1 = 1000
+        nu1 = 0.33
+        E2 = 1
+        nu2 = 0.0
+        Chom = GetHomProp2D_PlaneStress(self.morphology, E1, nu1, E2, nu2)
+        self.fitness = -1 * np.sum(Chom)
 
         # delete the morphology file.
         # os.remove("Robot_Morph_%.10d.txt"%self.get_seq_num())
