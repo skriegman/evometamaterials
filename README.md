@@ -1,2 +1,2 @@
-# voxcraft-evo
-An evolutionary design package for voxcraft-sim.
+# evometamaterials
+An evolutionary design package for metamaterials.
