@@ -120,7 +120,8 @@ class SoftbotRobot(MOORobotInterface):
         E2 = 1
         nu2 = 0.0
         Chom = GetHomProp2D_PlaneStress(self.morphology, E1, nu1, E2, nu2)
-        self.fitness = -1 * np.sum(Chom)
+
+        self.fitness = Chom[0, 1] / float(Chom[0, 0])
 
         # delete the morphology file.
         # os.remove("Robot_Morph_%.10d.txt"%self.get_seq_num())

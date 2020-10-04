@@ -35,7 +35,7 @@ from utils import StructureGenotype, StructurePhenotype, get_seq_num
 
 
 POP_SIZE = 32  # how large of a population are we using?
-GENS = 1000  # how many generations are we optimizing for?
+GENS = 250  # how many generations are we optimizing for?
 
 printing = True
 
@@ -62,6 +62,7 @@ if __name__ == '__main__':
     afpo_alg = AFPOMoo(robot_factory, pop_size=POP_SIZE)
 
     # do each generation.
+    best_design = []
     for generation in range(GENS):
         if printing:
             print("generation %d" % (generation))
@@ -74,4 +75,8 @@ if __name__ == '__main__':
             print('\n'.join([str(d) for d in dom_inds]))
 
         best_fit, best_robot = afpo_alg.get_best()
+
+        best_design = best_robot.morphology
+
+    print(best_design)
 
