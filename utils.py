@@ -18,7 +18,7 @@ import numpy as np
 from evosorocore.Genome import Genotype, Phenotype, make_material_tree
 from evosorocore.Networks import CPPN
 
-IND_SIZE = (50, 50, 1)
+IND_SIZE = (20, 20, 1)
 MIN_PERCENT_FULL = 0.0
 
 # build a full binary tree that is mostly balanced with NUM_MATERIALS + 1 leaf nodes.

@@ -79,7 +79,7 @@ class SoftbotRobot(MOORobotInterface):
         return [self.get_age()]
 
     def get_maximize_vals(self):
-        return [self.get_fitness()]
+        return [self.get_fitness(), 1.0*(np.sum(self.morphology > 0) > 0)]
 
     def get_seq_num(self):
         return self.seq_num
@@ -121,7 +121,7 @@ class SoftbotRobot(MOORobotInterface):
         nu2 = 0.0
         Chom = GetHomProp2D_PlaneStress(self.morphology, E1, nu1, E2, nu2)
 
-        self.fitness = Chom[0, 1] / float(Chom[0, 0])
+        self.fitness = -1 * Chom[0, 1] / float(Chom[0, 0])
 
         # delete the morphology file.
         # os.remove("Robot_Morph_%.10d.txt"%self.get_seq_num())
