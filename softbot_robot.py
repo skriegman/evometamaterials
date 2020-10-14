@@ -45,7 +45,7 @@ class SoftbotRobot(MOORobotInterface):
     def __str__(self):
         return self.__repr__()
     def __repr__(self):
-        return "AFPO BOT: f: %.2f age: %d voxCnt: %d -- ID: %s" % (self.get_fitness(), self.get_age(),  np.sum(self.morphology > 0),  str(self.seq_num))
+        return "AFPO BOT: f: %.2f age: %d voxCnt: %d -- ID: %s" % (self.get_fitness(), self.get_age(),  str(self.seq_num))  # np.sum(self.morphology > 0)
 
 
     def get_id(self):
@@ -79,7 +79,7 @@ class SoftbotRobot(MOORobotInterface):
         return [self.get_age()]
 
     def get_maximize_vals(self):
-        return [self.get_fitness(), 1.0*(np.sum(self.morphology > 0) > 0)]
+        return [self.get_fitness()]  # , 1.0*(np.sum(self.morphology > 0) > 0)]  # here's how to add another objective
 
     def get_seq_num(self):
         return self.seq_num

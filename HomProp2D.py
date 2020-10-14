@@ -85,7 +85,13 @@ def GetHomProp2D_PlaneStress(MetaDesign,E1,nu1,E2,nu2,Amat=np.eye(2)):
     Kda = (Kuc.dot(Da)).T.dot(Da)
     Chom = (Kda.dot(Bep)).T.dot(Bep) / LA.det(Amat)
     Modes = Da.dot(Bep)
-    return Chom
+
+    # Chris said to replace the output with this:
+    # Chom = sp.linalg.inv(Chom)
+    # nueff = -0.5 * (Chom[1,0]/Chom[0,0] + Chom[0,1]/Chom[1,1])
+    # Eeff = 0.5*(1/Chom[0,0]+1/Chom[1,1])  # Avg young mod
+
+    return Chom  # change this to nueff, Eeff and optimize both (very stiff?, very negative poisson)
 
 E1 = 1000
 nu1 = 0.33

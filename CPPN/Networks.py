@@ -6,7 +6,7 @@ import networkx as nx
 import numpy as np
 from networkx import DiGraph
 
-from evosorocore.NetworkUtils import neg_abs, neg_sqrt_abs, neg_square, normalize, sigmoid, sqrt_abs
+from evosorocore.NetworkUtils import neg_abs, neg_sqrt_abs, neg_square, normalize, sigmoid, sqrt_abs, neg_sign
 from evosorocore.NetworkUtils import vox_xyz_from_id
 
 
@@ -41,7 +41,7 @@ class Network(object):
 
 class CPPN(Network):
     input_node_names = ['x', 'y', 'z', 'd', 'b']
-    activation_functions = [np.sin, np.abs, neg_abs, np.square, neg_square, sqrt_abs, neg_sqrt_abs]
+    activation_functions = [np.sin, np.abs, neg_abs, np.square, neg_square, sqrt_abs, neg_sqrt_abs, np.sign, neg_sign]
 
     def __init__(self, output_node_names, num_nodes_to_start=10, num_links_to_start=10):
         Network.__init__(self, output_node_names)

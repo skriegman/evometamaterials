@@ -45,6 +45,10 @@ def std_abs(x):
     return np.std(np.abs(x))
 
 
+def neg_sign(x):
+    return -np.sign(x)
+
+
 def count_positive(x):
     return np.sum(np.greater(x, 0))
 
